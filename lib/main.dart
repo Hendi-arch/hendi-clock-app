@@ -11,6 +11,9 @@ void main() async {
 
   /// initialize sharedPreferences
   prefs = await SharedPreferences.getInstance();
+
+  /// running app
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

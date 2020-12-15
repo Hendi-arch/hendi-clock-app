@@ -5,12 +5,21 @@ import 'package:my_clock_app/utils/themes/themes.dart';
 import 'package:flutter/foundation.dart' show ChangeNotifier;
 
 class PreferenceAndSettingsNotifier with ChangeNotifier {
+  int _itemIndex = 0;
   bool _themeState;
   ThemeData _themeData;
 
-  themeState() => _themeState;
+  int get itemIndex => _itemIndex;
 
-  themeData() => _themeData;
+  bool themeState() => _themeState;
+
+  ThemeData themeData() => _themeData;
+
+  set itemIndex(int value) {
+    _itemIndex = value;
+
+    notifyListeners();
+  }
 
   refresh() {
     _themeState = prefs.getBool(MyKeys.themeData) ?? true;
