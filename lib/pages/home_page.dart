@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_clock_app/pages/StopWatchPage.dart';
+import 'package:my_clock_app/pages/TimerPage.dart';
 import 'package:my_clock_app/providers/app_provider.dart';
 import 'package:my_clock_app/utils/constan.dart';
 import 'package:my_clock_app/utils/screen/screen_util.dart';
@@ -9,6 +11,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart' show Provider;
 
 import 'AlarmPage.dart';
+import 'WorldPage.dart';
 
 class HomePage extends StatelessWidget {
   final _tabController = PersistentTabController(initialIndex: 0);
@@ -67,30 +70,9 @@ class HomePage extends StatelessWidget {
         context,
         screens: [
           AlarmPage(),
-          Stack(children: [
-            Align(
-                alignment: Alignment(0.0, -1.0),
-                child: ClockWidget(
-                    width: 350 * ScreenUtil.scaleDiagonal,
-                    height: 350 * ScreenUtil.scaleDiagonal)),
-            Align(alignment: Alignment(0.0, -0.03), child: ClockTextWidget())
-          ]),
-          Stack(children: [
-            Align(
-                alignment: Alignment(0.0, -1.0),
-                child: ClockWidget(
-                    width: 350 * ScreenUtil.scaleDiagonal,
-                    height: 350 * ScreenUtil.scaleDiagonal)),
-            Align(alignment: Alignment(0.0, -0.03), child: ClockTextWidget())
-          ]),
-          Stack(children: [
-            Align(
-                alignment: Alignment(0.0, -1.0),
-                child: ClockWidget(
-                    width: 350 * ScreenUtil.scaleDiagonal,
-                    height: 350 * ScreenUtil.scaleDiagonal)),
-            Align(alignment: Alignment(0.0, -0.03), child: ClockTextWidget())
-          ]),
+          WorldPage(),
+          TimerPage(),
+          StopWatchPage()
         ],
         items: [
           _buildItems(context,
