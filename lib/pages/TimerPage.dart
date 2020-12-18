@@ -12,10 +12,104 @@ class TimerPage extends StatelessWidget {
       child: Stack(
         children: [
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment(0.0, -0.8),
+            child: Container(
+              width: ScreenUtil.screenWidth,
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      text: '00\n',
+                      style: TextStyle(
+                          color: const Color(0xffCCCCCC),
+                          fontSize: 64 * ScreenUtil.scaleDiagonal,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Segoe UI"
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'H',
+                          style: TextStyle(
+                              color: const Color(0xffCCCCCC),
+                              fontSize: 18 * ScreenUtil.scaleDiagonal,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: "Segoe UI"
+                          ),
+                        )
+                      ]
+                    ),
+                  ),
+                  Text(':', style: TextStyle(
+                      color: const Color(0xffCCCCCC),
+                      fontSize: 54 * ScreenUtil.scaleDiagonal,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "Segoe UI"
+                  ),),
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text: '00\n',
+                        style: TextStyle(
+                            color: const Color(0xffCCCCCC),
+                            fontSize: 64 * ScreenUtil.scaleDiagonal,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Segoe UI"
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'M',
+                            style: TextStyle(
+                                color: const Color(0xffCCCCCC),
+                                fontSize: 18 * ScreenUtil.scaleDiagonal,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "Segoe UI"
+                            ),
+                          )
+                        ]
+                    ),
+                  ),
+                  Text(':', style: TextStyle(
+                      color: const Color(0xffCCCCCC),
+                      fontSize: 54 * ScreenUtil.scaleDiagonal,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "Segoe UI"
+                  ),),
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text: '00\n',
+                        style: TextStyle(
+                            color: const Color(0xffCCCCCC),
+                            fontSize: 64 * ScreenUtil.scaleDiagonal,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Segoe UI"
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'S',
+                            style: TextStyle(
+                                color: const Color(0xffCCCCCC),
+                                fontSize: 18 * ScreenUtil.scaleDiagonal,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "Segoe UI"
+                            ),
+                          )
+                        ]
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment(0.0, 0.5),
             child: SvgPicture.string(SvgAssets.icNumpad,
                 allowDrawingOutsideViewBox: true,
-                height: 330 * ScreenUtil.scaleDiagonal),
+                height: 300 * ScreenUtil.scaleDiagonal),
           )
         ],
       ),

@@ -3,6 +3,7 @@ import 'pages/home_page.dart';
 import 'providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart' show SystemChrome, DeviceOrientation;
 import 'package:provider/provider.dart'
     show ChangeNotifierProvider, MultiProvider, Consumer;
 
@@ -12,8 +13,11 @@ void main() async {
   /// initialize sharedPreferences
   prefs = await SharedPreferences.getInstance();
 
-  /// running app
-  runApp(MyApp());
+  /// run the app with only in portrait mode
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {

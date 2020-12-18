@@ -59,21 +59,22 @@ class HomePage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: const Color(0xff1F2426),
                         fontSize: 18 * ScreenUtil.scaleDiagonal)),
-                SvgPicture.string(SvgAssets.icDarkLightMode,
-                    allowDrawingOutsideViewBox: true,
-                    width: 24 * ScreenUtil.scaleDiagonal,
-                    height: 24 * ScreenUtil.scaleDiagonal)
+                GestureDetector(
+                  onTap: () {
+                    _notifier
+                        .changeTheme(_notifier.themeState() ? false : true);
+                  },
+                  child: SvgPicture.string(SvgAssets.icDarkLightMode,
+                      allowDrawingOutsideViewBox: true,
+                      width: 24 * ScreenUtil.scaleDiagonal,
+                      height: 24 * ScreenUtil.scaleDiagonal),
+                )
               ],
             ),
           )),
       body: PersistentTabView(
         context,
-        screens: [
-          AlarmPage(),
-          WorldPage(),
-          TimerPage(),
-          StopWatchPage()
-        ],
+        screens: [AlarmPage(), WorldPage(), TimerPage(), StopWatchPage()],
         items: [
           _buildItems(context,
               title: "Alarm",

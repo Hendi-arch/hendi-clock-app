@@ -10,7 +10,7 @@ class ClockTextWidget extends StatelessWidget {
     return Consumer<PreferenceAndSettingsNotifier>(
       builder: (context, value, child) => RichText(
           text: TextSpan(
-              text: "Current Timezone - IN\n",
+              text: "Current Timezone - ID\n",
               style: TextStyle(
                   fontWeight: FontWeight.w300,
                   fontFamily: "Segoe UI",
@@ -18,7 +18,7 @@ class ClockTextWidget extends StatelessWidget {
                   color: const Color(0xff1F2426).withOpacity(0.56)),
               children: <TextSpan>[
                 TextSpan(
-                  text: "4:14",
+                  text: "16:14",
                   style: TextStyle(
                       fontFamily: "Segoe UI",
                       fontWeight: FontWeight.w600,

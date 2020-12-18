@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:my_clock_app/models/alarm_model.dart';
 import 'package:my_clock_app/widgets/button_widget.dart';
 import 'package:my_clock_app/utils/screen/screen_util.dart';
 
-class AlarmPage extends StatelessWidget {
+class AlarmPage extends StatefulWidget {
+  @override
+  _AlarmPageState createState() => _AlarmPageState();
+}
+
+class _AlarmPageState extends State<AlarmPage> {
+  final List<AlarmModel> _listAlarmModel = [
+    AlarmModel(time: '04:30', description: 'Sholat subuh 🙏'),
+    AlarmModel(time: '03:00', description: 'Sahur 🍲'),
+    AlarmModel(time: '14:00', description: 'Berangkat ke Amerika ✈️')
+  ];
+  final _listBool = [false, false, false, false, false];
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil().init(context);
@@ -41,35 +54,40 @@ class AlarmPage extends StatelessWidget {
             child: Container(
               height: ScreenUtil.screenHeight * 0.65,
               child: ListView.builder(
-                itemCount: 5,
                 scrollDirection: Axis.vertical,
                 physics: BouncingScrollPhysics(),
+                itemCount: _listAlarmModel.length,
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 itemBuilder: (context, index) {
-                  return SwitchListTile.adaptive(
-                    value: true,
-                    onChanged: (v) {},
-                    title: Text(
-                      "6:50 AM",
-                      style: TextStyle(
-                        color: const Color(0xff1F2426),
-                        fontSize: 24 * ScreenUtil.scaleDiagonal,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Segoe UI",
-                      ),
-                    ),
-                    subtitle: Text(
-                      "Every Day",
-                      style: TextStyle(
-                        color: const Color(0xff1F2426),
-                        fontSize: 14 * ScreenUtil.scaleDiagonal,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: "Segoe UI",
-                      ),
-                    ),
-                    activeColor: const Color(0xffE2EAED),
-                    activeTrackColor: const Color(0xff2680EB),
-                    controlAffinity: ListTileControlAffinity.trailing,
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 15),
+                    child: SwitchListTile.adaptive(
+                        value: _listBool[index],
+                        title: Text(
+                          _listAlarmModel[index].time,
+                          style: TextStyle(
+                            color: _listBool[index]
+                                ? const Color(0xff1F2426)
+                                : const Color(0xffCCCCCC),
+                            fontSize: 24 * ScreenUtil.scaleDiagonal,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Segoe UI",
+                          ),
+                        ),
+                        subtitle: Text(
+                          _listAlarmModel[index].description,
+                          style: TextStyle(
+                            color: _listBool[index]
+                                ? const Color(0xff1F2426)
+                                : const Color(0xffCCCCCC),
+                            fontSize: 15 * ScreenUtil.scaleDiagonal,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Segoe UI",
+                          ),
+                        ),
+                        activeColor: const Color(0xff2680EB),
+                        controlAffinity: ListTileControlAffinity.trailing,
+                        onChanged: (v) => setState(() => _listBool[index] = v)),
                   );
                 },
               ),
