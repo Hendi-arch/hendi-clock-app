@@ -1,17 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_clock_app/pages/StopWatchPage.dart';
-import 'package:my_clock_app/pages/TimerPage.dart';
-import 'package:my_clock_app/providers/app_provider.dart';
-import 'package:my_clock_app/utils/constan.dart';
-import 'package:my_clock_app/utils/screen/screen_util.dart';
-import 'package:my_clock_app/widgets/clock_text_widget.dart';
-import 'package:my_clock_app/widgets/clock_widget.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:provider/provider.dart' show Provider;
-
 import 'AlarmPage.dart';
 import 'WorldPage.dart';
+import 'package:flutter/material.dart';
+import 'package:my_clock_app/utils/constan.dart';
+import 'package:my_clock_app/pages/TimerPage.dart';
+import 'package:provider/provider.dart' show Provider;
+import 'package:my_clock_app/pages/StopWatchPage.dart';
+import 'package:my_clock_app/providers/app_provider.dart';
+import 'package:my_clock_app/utils/screen/screen_util.dart';
+import 'package:flutter_svg/flutter_svg.dart' show SvgPicture;
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class HomePage extends StatelessWidget {
   final _tabController = PersistentTabController(initialIndex: 0);
@@ -36,7 +33,8 @@ class HomePage extends StatelessWidget {
             height: 24 * ScreenUtil.scaleDiagonal,
             width: 24 * ScreenUtil.scaleDiagonal),
         activeColor: Colors.blueGrey,
-        activeColorAlternate: const Color(0xff1F2426),
+        activeColorAlternate:
+            notifier.themeState() ? const Color(0xff1F2426) : Colors.white,
         inactiveColor: Theme.of(context).backgroundColor);
   }
 
@@ -49,7 +47,7 @@ class HomePage extends StatelessWidget {
           elevation: 0.0,
           flexibleSpace: Padding(
             padding: EdgeInsets.only(
-                top: ScreenUtil.paddingTop, left: 15, right: 15),
+                top: ScreenUtil.paddingTop + 10, left: 15, right: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -57,7 +55,6 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: "Segoe UI",
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xff1F2426),
                         fontSize: 18 * ScreenUtil.scaleDiagonal)),
                 GestureDetector(
                   onTap: () {

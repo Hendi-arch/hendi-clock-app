@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_clock_app/models/alarm_model.dart';
+import 'package:provider/provider.dart' show Provider;
 import 'package:my_clock_app/widgets/button_widget.dart';
+import 'package:my_clock_app/providers/app_provider.dart';
 import 'package:my_clock_app/utils/screen/screen_util.dart';
 
 class AlarmPage extends StatefulWidget {
@@ -19,12 +21,13 @@ class _AlarmPageState extends State<AlarmPage> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil().init(context);
+    var _notifier = Provider.of<PreferenceAndSettingsNotifier>(context);
     return Container(
       color: Theme.of(context).backgroundColor,
       child: Stack(
         children: [
           Align(
-            alignment: Alignment.topCenter,
+            alignment: Alignment(0.0, -0.9),
             child: WidgetRaisedButton(
                 function: () {},
                 color: Theme.of(context).backgroundColor,
@@ -44,7 +47,9 @@ class _AlarmPageState extends State<AlarmPage> {
                   BoxShadow(
                     blurRadius: 6.0,
                     offset: const Offset(0.0, 6.0),
-                    color: const Color(0xffE2EAED),
+                    color: _notifier.themeState()
+                        ? const Color(0xffE2EAED)
+                        : const Color(0xff3A454A),
                   )
                 ],
                 margin: const EdgeInsets.symmetric(horizontal: 15)),
@@ -66,9 +71,14 @@ class _AlarmPageState extends State<AlarmPage> {
                         title: Text(
                           _listAlarmModel[index].time,
                           style: TextStyle(
-                            color: _listBool[index]
+                            color: _listBool[index] && _notifier.themeState()
                                 ? const Color(0xff1F2426)
-                                : const Color(0xffCCCCCC),
+                                : _listBool[index] && !_notifier.themeState()
+                                    ? const Color(0xffFFFFFF)
+                                    : !_listBool[index] &&
+                                            _notifier.themeState()
+                                        ? const Color(0xffCCCCCC)
+                                        : const Color(0xff3A454A),
                             fontSize: 24 * ScreenUtil.scaleDiagonal,
                             fontWeight: FontWeight.bold,
                             fontFamily: "Segoe UI",
@@ -77,9 +87,14 @@ class _AlarmPageState extends State<AlarmPage> {
                         subtitle: Text(
                           _listAlarmModel[index].description,
                           style: TextStyle(
-                            color: _listBool[index]
+                            color: _listBool[index] && _notifier.themeState()
                                 ? const Color(0xff1F2426)
-                                : const Color(0xffCCCCCC),
+                                : _listBool[index] && !_notifier.themeState()
+                                ? const Color(0xffFFFFFF)
+                                : !_listBool[index] &&
+                                _notifier.themeState()
+                                ? const Color(0xffCCCCCC)
+                                : const Color(0xff3A454A),
                             fontSize: 15 * ScreenUtil.scaleDiagonal,
                             fontWeight: FontWeight.w400,
                             fontFamily: "Segoe UI",

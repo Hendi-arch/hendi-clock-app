@@ -15,7 +15,7 @@ class ClockTextWidget extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                   fontFamily: "Segoe UI",
                   fontSize: 14 * ScreenUtil.scaleDiagonal,
-                  color: const Color(0xff1F2426).withOpacity(0.56)),
+                  color: const Color(0xff707070)),
               children: <TextSpan>[
                 TextSpan(
                   text: "16:14",
@@ -31,7 +31,7 @@ class ClockTextWidget extends StatelessWidget {
                       fontFamily: "Segoe UI",
                       fontWeight: FontWeight.w600,
                       fontSize: 24 * ScreenUtil.scaleDiagonal,
-                      color: const Color(0xff1F2426).withOpacity(0.56)),
+                      color: const Color(0xff707070)),
                 ),
               ]),
           textAlign: TextAlign.center),

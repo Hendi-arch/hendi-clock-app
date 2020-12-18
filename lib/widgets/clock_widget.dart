@@ -17,7 +17,7 @@ class ClockWidget extends StatelessWidget {
       builder: (context, value, child) => Stack(
         children: [
           Align(
-            alignment: Alignment(0.0, -0.85),
+            alignment: Alignment(0.03, -0.90),
             child: Container(
               width: 230 * ScreenUtil.scaleDiagonal,
               height: 230 * ScreenUtil.scaleDiagonal,
@@ -27,7 +27,7 @@ class ClockWidget extends StatelessWidget {
                   BoxShadow(
                     blurRadius: 30,
                     offset: const Offset(0.0, 30),
-                    color: const Color(0xffE2EAED),
+                    color: value.themeState() ? const Color(0xffE2EAED) : const Color(0xff3A454A),
                   )
                 ],
               ),

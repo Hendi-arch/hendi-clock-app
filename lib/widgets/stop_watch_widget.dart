@@ -22,7 +22,7 @@ class StopWatchWidget extends StatelessWidget {
         children: [
           Align(
             // shadow top
-            alignment: Alignment(0.0, -0.85),
+            alignment: Alignment(0.0, -0.90),
             child: Container(
               width: 230 * ScreenUtil.scaleDiagonal,
               height: 230 * ScreenUtil.scaleDiagonal,
@@ -32,7 +32,7 @@ class StopWatchWidget extends StatelessWidget {
                   BoxShadow(
                     blurRadius: 30,
                     offset: const Offset(0.0, 30),
-                    color: const Color(0xffE2EAED),
+                    color: value.themeState() ? const Color(0xffE2EAED) : const Color(0xff3A454A),
                   )
                 ],
               ),
@@ -51,17 +51,17 @@ class StopWatchWidget extends StatelessWidget {
           ),
           Align(
             // shadow bottom
-            alignment: Alignment(0.0, 0.42),
+            alignment: Alignment(0.0, 0.40),
             child: Container(
-              width: 80 * ScreenUtil.scaleDiagonal,
-              height: 80 * ScreenUtil.scaleDiagonal,
+              width: 75 * ScreenUtil.scaleDiagonal,
+              height: 75 * ScreenUtil.scaleDiagonal,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 6,
                     offset: const Offset(0.0, 6.0),
-                    color: const Color(0xffE2EAED),
+                    color: value.themeState() ? const Color(0xffE2EAED) : const Color(0xff3A454A),
                   )
                 ],
               ),
