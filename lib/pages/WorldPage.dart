@@ -19,14 +19,17 @@ class WorldPage extends StatelessWidget {
     ScreenUtil().init(context);
     return Container(
       color: Theme.of(context).backgroundColor,
-      child: Stack(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ClockWidget(
               width: 350 * ScreenUtil.scaleDiagonal,
               height: 350 * ScreenUtil.scaleDiagonal),
-          Align(alignment: Alignment(0.0, 0.1), child: ClockTextWidget()),
-          Align(
-            alignment: Alignment(0.0, 0.40),
+          Transform.translate(
+              offset: Offset(0.0, -20.0 * ScreenUtil.scaleDiagonal),
+              child: ClockTextWidget()),
+          Transform.translate(
+            offset: Offset(0.0, -10.0 * ScreenUtil.scaleDiagonal),
             child: WidgetRaisedButton(
                 function: () {},
                 color: Theme.of(context).backgroundColor,
@@ -44,59 +47,55 @@ class WorldPage extends StatelessWidget {
                 border: Border.all(color: const Color(0xffE2EAED), width: 1.0),
                 margin: const EdgeInsets.symmetric(horizontal: 15)),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 160 * ScreenUtil.scaleDiagonal,
-              child: ListView.builder(
-                itemCount: _listWorldClockModel.length,
-                scrollDirection: Axis.vertical,
-                physics: BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return WidgetRaisedButton(
-                      function: () {},
-                      color: Theme.of(context).backgroundColor,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                _listWorldClockModel[index].city,
-                                style: TextStyle(
-                                    fontFamily: "Segoe UI",
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14 * ScreenUtil.scaleDiagonal),
-                              ),
-                              Text(
-                                _listWorldClockModel[index].date,
-                                style: TextStyle(
-                                    fontFamily: "Segoe UI",
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10 * ScreenUtil.scaleDiagonal),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            _listWorldClockModel[index].time,
-                            style: TextStyle(
-                                fontFamily: "Segoe UI",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16 * ScreenUtil.scaleDiagonal),
-                          ),
-                        ],
-                      ),
-                      width: ScreenUtil.screenWidth,
-                      height: 60 * ScreenUtil.scaleDiagonal,
-                      radius: 30,
-                      border: Border.all(
-                          color: const Color(0xffE2EAED), width: 1.0),
-                      margin: const EdgeInsets.only(
-                          left: 15, right: 15, bottom: 10));
-                },
-              ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _listWorldClockModel.length,
+              scrollDirection: Axis.vertical,
+              physics: BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return WidgetRaisedButton(
+                    function: () {},
+                    color: Theme.of(context).backgroundColor,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              _listWorldClockModel[index].city,
+                              style: TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14 * ScreenUtil.scaleDiagonal),
+                            ),
+                            Text(
+                              _listWorldClockModel[index].date,
+                              style: TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 10 * ScreenUtil.scaleDiagonal),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          _listWorldClockModel[index].time,
+                          style: TextStyle(
+                              fontFamily: "Segoe UI",
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16 * ScreenUtil.scaleDiagonal),
+                        ),
+                      ],
+                    ),
+                    width: ScreenUtil.screenWidth,
+                    height: 60 * ScreenUtil.scaleDiagonal,
+                    radius: 30,
+                    border:
+                        Border.all(color: const Color(0xffE2EAED), width: 1.0),
+                    margin:
+                        const EdgeInsets.only(left: 15, right: 15, bottom: 10));
+              },
             ),
           )
         ],

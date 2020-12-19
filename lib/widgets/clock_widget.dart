@@ -15,34 +15,31 @@ class ClockWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PreferenceAndSettingsNotifier>(
       builder: (context, value, child) => Stack(
+        alignment: Alignment.center,
         children: [
-          Align(
-            alignment: Alignment(0.03, -0.90),
-            child: Container(
-              width: 230 * ScreenUtil.scaleDiagonal,
-              height: 230 * ScreenUtil.scaleDiagonal,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 30,
-                    offset: const Offset(0.0, 30),
-                    color: value.themeState() ? const Color(0xffE2EAED) : const Color(0xff3A454A),
-                  )
-                ],
-              ),
+          Container(
+            width: 230 * ScreenUtil.scaleDiagonal,
+            height: 230 * ScreenUtil.scaleDiagonal,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 40,
+                  offset: const Offset(0.0, 5.0),
+                  color: value.themeState()
+                      ? const Color(0xffE2EAED)
+                      : const Color(0xff000000),
+                )
+              ],
             ),
           ),
-          Align(
-            alignment: Alignment(0.0, -1.0),
-            child: SvgPicture.string(
-              value.themeState()
-                  ? SvgAssets.icBigClockLight
-                  : SvgAssets.icBigClockDark,
-              width: width,
-              height: height,
-              allowDrawingOutsideViewBox: true,
-            ),
+          SvgPicture.string(
+            value.themeState()
+                ? SvgAssets.icBigClockLight
+                : SvgAssets.icBigClockDark,
+            width: width,
+            height: height,
+            allowDrawingOutsideViewBox: true,
           ),
         ],
       ),
