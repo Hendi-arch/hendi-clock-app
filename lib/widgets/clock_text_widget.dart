@@ -18,7 +18,7 @@ class ClockTextWidget extends StatelessWidget {
                   color: const Color(0xff707070)),
               children: <TextSpan>[
                 TextSpan(
-                  text: "16:14",
+                  text: "16:14 ",
                   style: TextStyle(
                       fontFamily: "Segoe UI",
                       fontWeight: FontWeight.w600,
