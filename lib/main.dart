@@ -24,17 +24,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<PreferenceAndSettingsNotifier>(
-            create: (context) => PreferenceAndSettingsNotifier()..refresh())
-      ],
-      child: Consumer<PreferenceAndSettingsNotifier>(
-        builder: (context, value, child) => MaterialApp(
-            home: HomePage(),
-            title: "My Clock App",
-            theme: value.themeData(),
-            debugShowCheckedModeBanner: false),
-      ),
-    );
+        providers: [
+          ChangeNotifierProvider<PreferenceAndSettingsNotifier>(
+              create: (context) => PreferenceAndSettingsNotifier()..refresh())
+        ],
+        child: Consumer<PreferenceAndSettingsNotifier>(
+            builder: (context, value, child) => MaterialApp(
+                home: HomePage(),
+                title: "My Clock App",
+                theme: value.themeData(),
+                debugShowCheckedModeBanner: false)));
   }
 }
